@@ -15,4 +15,3 @@ class ProductCreateSchema(ProductModel):
 
 class ProductUpdateSchema(ProductCreateSchema):
     id: int
-    
