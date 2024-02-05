@@ -7,7 +7,7 @@ from sqlmodel import Session
 from app.authentication.jwt import get_current_user
 from app.core.database import get_session
 from app.base.crud import BaseCRUD
-from app.base.schemas import BaseResponse
+from app.base.responses import BaseResponse
 
 
 class BaseRouter:

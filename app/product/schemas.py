@@ -1,7 +1,7 @@
 from .models import ProductModel
 from typing import List
 
-from app.base.schemas import BaseResponse
+from app.base.responses import BaseResponse
 from app.stock.models import Stock
 
 
