@@ -1,5 +1,4 @@
-from pydantic import BaseModel
-from sqlmodel import SQLModel, Field
+from sqlmodel import SQLModel, Field, Relationship
 from datetime import date
     
 
@@ -11,3 +10,4 @@ class ProductModel(SQLModel):
 66
 class Product(ProductModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
+    stocks: list["Stock"] = Relationship(back_populates="product")

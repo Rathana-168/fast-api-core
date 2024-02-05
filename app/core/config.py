@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     project_name: str
     version: str
     description: str
+    python_version: str
     
     # Secret Key
     SECRET_KEY: str

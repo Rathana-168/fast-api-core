@@ -1,14 +1,11 @@
 from datetime import timedelta
 from typing import Annotated
-
 from fastapi import Depends, HTTPException, status, APIRouter
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlmodel.ext.asyncio.session import AsyncSession
-from sqlmodel import select
 
 from app import settings
 from app.core.database import get_session
-from app.base.crud import BaseCRUD
 
 from .models import UserModel, User
 from .jwt import authenticate_user, create_access_token, get_current_active_user, get_password_hash
@@ -42,24 +39,8 @@ async def read_users_me(
     return current_user
 
 
-@router.get("/users/me/items/")
-async def read_own_items(
-    current_user: Annotated[UserModel, Depends(get_current_active_user)]
-):
-    return [{"item_id": "Foo", "owner": current_user.username}]
-
-
-@router.get('/list-user')
-async def get_list_user(
-    db: AsyncSession = Depends(get_session)
-):
-    logic = BaseCRUD(session=db)
-    result = await logic.get_list(model=User)
-    return result
-
-
 @router.post('/create-user', response_model=RegisterUserResponse)
-async def get_list_user(
+async def create_user(
     user: RegisterUserSchema, 
     db: AsyncSession = Depends(get_session)
 ):
