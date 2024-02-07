@@ -2,9 +2,11 @@ version: '3'
 
 services:
   app:
+    container_name: fast_api_core
     build: .
     ports:
       - "8001:8000"
+    command: sh -c "uvicorn main:app --port=8000 --host=0.0.0.0"
     volumes:
       - .:/app
     networks:
@@ -12,4 +14,4 @@ services:
 
 networks:
   fastapi_network:
-    driver: bridge
+    external: true
