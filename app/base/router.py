@@ -23,20 +23,15 @@ class BaseRouter:
 
     CREATE_SCHEMA = None
     UPDATE_SCHEMA = None
-    
-    
 
     def __init__(self, prefix: str = "", tag: str = None):
         self.router = APIRouter(prefix=prefix, tags=tag, dependencies=self.dependencies)
         self.initial_endpoint()
-        
-        
+
     def _get_childs_attr(self):
         return self.childs_attr
-    
 
     def initial_endpoint(self):
-
         async def get_list(db: Session = Depends(get_session)):
             return await self.get_list(db)
 

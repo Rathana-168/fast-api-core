@@ -3,12 +3,11 @@ from sqlmodel import select, Session, SQLModel
 from sqlalchemy.orm import selectinload
 from app.core.database import get_session
 
+
 class BaseCRUD:
-    
     def __init__(self, session: Session = Depends(get_session)) -> None:
         self.session = session
-        
-    
+
     async def query(self, model: SQLModel):
         statement = select(model)
         return statement

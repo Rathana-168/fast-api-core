@@ -5,7 +5,9 @@ import register_routers
 
 # Main Routers
 from app.authentication.routers import router as auth_router
+from app.workflow import router as workflow_router
 app.include_router(auth_router)
+app.include_router(workflow_router)
 
 
 @app.get('/init-db')
