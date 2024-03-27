@@ -10,6 +10,7 @@ app.include_router(auth_router)
 
 @app.get('/init-db')
 async def initialize_db():
+    print('ok')
     from app.core.database import init_db
     await init_db()
     return 'All Tables has created successfully'
